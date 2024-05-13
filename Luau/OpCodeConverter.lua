@@ -50,6 +50,39 @@ local OpCodeData = {
         print(table.concat(reftable[Refs[1]],", \n"))
         return "--SETLIST OPCODE SKIP"
     end,
+    ---@type function
+    ---@param Refs table<number,string>
+    ---@param Vals table<number,string>
+    ["ADD"] = function(Refs, Vals)
+        local r = concat(reftable[Refs[2]], " + ", reftable[Refs[3]])
+        reftable[Refs[1]] = r
+        return r
+    end,
+    ---@type function
+    ---@param Refs table<number,string>
+    ---@param Vals table<number,string>
+    ["SUB"] = function(Refs, Vals)
+        local r = concat(reftable[Refs[2]], " - ", reftable[Refs[3]])
+        reftable[Refs[1]] = r
+        return r
+    end,
+    ---@type function
+    ---@param Refs table<number,string>
+    ---@param Vals table<number,string>
+    ["MUL"] = function(Refs, Vals)
+        local r = concat(reftable[Refs[2]], " * ", reftable[Refs[3]])
+        reftable[Refs[1]] = r
+        return r
+    end,
+    ---@type function
+    ---@param Refs table<number,string>
+    ---@param Vals table<number,string>
+    ["DIV"] = function(Refs, Vals)
+        local r = concat(reftable[Refs[2]], " / ", reftable[Refs[3]])
+        reftable[Refs[1]] = r
+        return r
+    end,
+    
 }
 
 local e = setmetatable(OpCodeData, {
