@@ -1,6 +1,11 @@
 local function concat(...)
-    local s = ""for i,v in pairs({...})do;s = s..tostring(v);end;return s
+    local s = ""
+    for i, v in pairs({ ... }) do
+        ; s = s .. tostring(v);
+    end; return s
 end
+
+
 
 local reftable = {}
 
@@ -34,12 +39,7 @@ local OpCodeData = {
     ---@param Refs table<number,string>
     ---@param Vals table<number,string>
     ["SETLIST"] = function(Refs, Vals)
-        local t = {}
-        for i = 0, Refs[3] do
-            table.insert(t, "unknown value: settable not called yet.")
-        end
-        reftable[Refs[1]] = t
-        return table.concat(t, " , \n")
+        
     end,
 }
 
