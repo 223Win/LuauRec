@@ -85,7 +85,7 @@ local OpCodeData = {
     
 }
 
-local e = setmetatable(OpCodeData, {
+setmetatable(OpCodeData, {
     __index = function (t, k)
         return function()
             return concat("Unknown OpCode Converter for: ", k, ", Invalid OpCode")
